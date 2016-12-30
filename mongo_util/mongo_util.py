@@ -233,3 +233,15 @@ class MongoIns(object):
         host = kwargs.pop('host', None)
         return self.get_conn(host = host, **kwargs)[dbname or DB_NAME][table].find(query).distinct(key)
 
+    def m_aggregate(self, table, pipeline, **kwargs):
+        """
+            aggregate
+        """
+        dbname = None
+        if 'dbname' in kwargs:
+            dbname=kwargs.pop('dbname')
+
+        host = kwargs.pop('host', None)
+        return self.get_conn(host = host, **kwargs)[dbname or DB_NAME][table].aggregate(pipeline)
+
+
