@@ -19,6 +19,28 @@ try:
 except Exception as e:
     pass
 
+
+def init_page(page):
+    start, end = 1, page.get('page_num')
+
+    page_index = int(page.get('page_index', '1'))
+    page_num = int(page.get('page_num'))
+
+    if page_index >5:
+        start = page_index - 5
+
+    if end >= 10:
+        end = start +9
+
+    if end > page_num:
+        end = page_num
+        start = page_num - 9
+
+    page['start'] = start
+    page['end'] = end
+
+    return page
+
 def mongo_conv(d):
     if isinstance(d, (ObjectId, datetime.datetime)):
         return str(d)
@@ -110,7 +132,7 @@ class MongoIns(object):
         else:
             ret = mongo_conv(list(tb.find(kwargs, fields).skip((page_index - 1) * page_size).limit(page_size)))
 
-
+        init_page(page)
         return ret, page
 
     def m_cursor(self, table, fields=None, sorts = None, **kwargs):

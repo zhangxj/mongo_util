@@ -12,7 +12,7 @@ def read(fname):
 
 setup(
     name = "mongo_util",
-    version = "0.0.8",
+    version = "0.0.9",
     author = "9wfox",
     author_email = "568628130@qq.com",
     description = ("An demonstration of how to create, document, and publish "
