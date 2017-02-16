@@ -12,7 +12,7 @@ def read(fname):
 
 setup(
     name = "mongo_util",
-    version = "0.0.7",
+    version = "0.0.8",
     author = "9wfox",
     author_email = "568628130@qq.com",
     description = ("An demonstration of how to create, document, and publish "
@@ -22,7 +22,7 @@ setup(
     url = "",
     packages=['mongo_util'],
     setup_requires = ['pymongo'],
-    long_description=read('README'),
+    long_description=read('README.md'),
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Topic :: Utilities",
