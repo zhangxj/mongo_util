@@ -7,12 +7,10 @@ from setuptools import setup
 # Used for the long_description.  It's nice, because now 1) we have a top level
 # README file and 2) it's easier to type in the README file than to put a raw
 # string in below ...
-def read(fname):
-    return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 setup(
     name = "mongo_util",
-    version = "0.0.9",
+    version = "0.1.3",
     author = "9wfox",
     author_email = "568628130@qq.com",
     description = ("An demonstration of how to create, document, and publish "
@@ -22,7 +20,7 @@ setup(
     url = "",
     packages=['mongo_util'],
     setup_requires = ['pymongo'],
-    long_description=read('README.md'),
+    long_description="util opt mongodb",
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Topic :: Utilities",

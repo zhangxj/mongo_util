@@ -42,7 +42,7 @@ def init_page(page):
     return page
 
 def mongo_conv(d):
-    if isinstance(d, (ObjectId, datetime.datetime)):
+    if isinstance(d, (ObjectId, datetime.datetime, datetime.date)):
         return str(d)
     elif isinstance(d,(unicode,)):
         return str(d.encode('utf-8'))
@@ -265,5 +265,17 @@ class MongoIns(object):
 
         host = kwargs.pop('host', None)
         return self.get_conn(host = host, **kwargs)[dbname or DB_NAME][table].aggregate(pipeline)
+
+
+    def m_map_reduce(self, table, m, r, output, **kwargs):
+        """
+            map_reduce
+        """
+        dbname = None
+        if 'dbname' in kwargs:
+            dbname=kwargs.pop('dbname')
+
+        host = kwargs.pop('host', None)
+        return self.get_conn(host = host, **kwargs)[dbname or DB_NAME][table].map_reduce(m, r, output, **kwargs)
 
 
